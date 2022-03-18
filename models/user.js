@@ -1,6 +1,6 @@
 const SequelizeSlugify = require('sequelize-slugify');
 const Joi = require('joi');
-const { userBcrypt } = require('../utils/bcrypt.password');
+const { useBcrypt } = require('../utils/bcrypt.password');
 
 module.exports = (sequelize, DataTypes) => {
 	const User = sequelize.define('user', {
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
 		source: ['username'],
 	});
 
-	userBcrypt(User, {
+	useBcrypt(User, {
 		rounds: 10,
 		compare: 'authenticate',
 	});
